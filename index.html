@@ -6,15 +6,35 @@
     <title>Loading</title>
     <style>
         body {
-            margin: 0;
+            margin: 0; /* Loại bỏ margin mặc định */
             height: 100vh; /* Sử dụng chiều cao 100% của viewport */
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
-            background-image: url(https://gifdb.com/images/high/pink-blossom-sparkling-animation-0ajdc1ccl5nqlvq4.gif);
+            overflow: hidden; /* Ẩn phần thừa */
+        }
+        .background {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background-image: url(https://i.giphy.com/26xBBei8OgoNzmMVi.webp);
             background-size: cover;
-            background-position: center;
+            background-position: center center;
+            filter: blur(10px); /* Làm mờ background */
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            text-align: center; /* Căn giữa nội dung */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff; /* Màu chữ mặc định */
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Áp dụng phông chữ Comic Sans MS */
         }
         img {
             margin-bottom: 20px; /* Di chuyển ảnh xuống 20px */
@@ -26,15 +46,17 @@
             padding: 10px 20px;
             border-radius: 10px;
             font-size: 24px;
-            color: #fff;
             font-weight: bold;
-            font-family: 'Comic Sans MS', cursive, sans-serif; /* Áp dụng phông chữ Comic Sans MS */
             animation: colorChange 4s ease-in-out infinite; /* Thêm hiệu ứng chuyển đổi màu */
             text-align: center; /* Căn giữa văn bản */
+            text-decoration: none; /* Loại bỏ gạch chân của liên kết */
+            display: inline-block; /* Đảm bảo padding được áp dụng đúng */
+            margin-bottom: 20px; /* Khoảng cách với ảnh */
+            color: #fff; /* Màu chữ trắng */
         }
         @keyframes colorChange {
             0% { background: rgba(168, 60, 204, 0.7); }
-            25% { background: rgba(255, 72, 72, 0.822); }
+            25% { background: rgba(235, 115, 115, 0.822); }
             50% { background: rgba(255, 123, 248, 0.7); }
             75% { background: rgba(175, 108, 253, 0.7); }
             100% { background: rgba(168, 60, 204, 0.7); }
@@ -57,13 +79,11 @@
         #myBtn:hover {
             background-color: #555; /* Màu nền của nút khi di chuột vào */
         }
-
         @media (max-width: 600px) {
             .text-overlay {
                 font-size: 18px; /* Giảm kích thước font chữ trên màn hình nhỏ */
                 padding: 8px 16px; /* Giảm khoảng cách padding trên màn hình nhỏ */
             }
-
             #myBtn {
                 font-size: 16px; /* Giảm kích thước font chữ của nút trên màn hình nhỏ */
                 padding: 10px; /* Giảm khoảng cách padding của nút trên màn hình nhỏ */
@@ -73,7 +93,6 @@
 </head>
 <script>
     window.onscroll = function() {scrollFunction()};
-
     function scrollFunction() {
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
             document.getElementById("myBtn").style.display = "block";
@@ -81,16 +100,17 @@
             document.getElementById("myBtn").style.display = "none";
         }
     }
-
-    // Cuộn lên đầu trang khi nút được nhấn
     function topFunction() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
 </script>
 <body>
-    <img src="are you ready.png" alt="SĂN SÀNG CHƯA BE YÊU">
-    <div class="text-overlay">CLICK HERE</div>
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    <div class="background"></div>
+    <div class="content">
+        <img src="are you ready.png" alt="SĂN SÀNG CHƯA BE YÊU">
+        <a href="question.html" class="text-overlay">READY</a>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+    </div>
 </body>
 </html>

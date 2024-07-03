@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh; /* Sử dụng chiều cao 100% của viewport */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
+            background-image: url(https://gifdb.com/images/high/pink-blossom-sparkling-animation-0ajdc1ccl5nqlvq4.gif);
+            background-size: cover;
+            background-position: center;
+        }
+        img {
+            margin-bottom: 20px; /* Di chuyển ảnh xuống 20px */
+            max-width: 100%; /* Đảm bảo ảnh không vượt quá chiều rộng màn hình */
+            height: auto; /* Duy trì tỷ lệ ảnh */
+        }
+        .text-overlay {
+            background: rgba(168, 60, 204, 0.7); /* Lớp phủ mờ màu hồng */
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 24px;
+            color: #fff;
+            font-weight: bold;
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* Áp dụng phông chữ Comic Sans MS */
+            animation: colorChange 4s ease-in-out infinite; /* Thêm hiệu ứng chuyển đổi màu */
+            text-align: center; /* Căn giữa văn bản */
+        }
+        @keyframes colorChange {
+            0% { background: rgba(168, 60, 204, 0.7); }
+            25% { background: rgba(255, 72, 72, 0.822); }
+            50% { background: rgba(255, 123, 248, 0.7); }
+            75% { background: rgba(175, 108, 253, 0.7); }
+            100% { background: rgba(168, 60, 204, 0.7); }
+        }
+        #myBtn {
+            display: none; /* Ẩn nút ban đầu */
+            position: fixed; /* Đặt nút ở vị trí cố định */
+            bottom: 20px; /* Cách đáy trang 20px */
+            right: 30px; /* Cách bên phải trang 30px */
+            z-index: 99; /* Đảm bảo nút nằm trên các phần tử khác */
+            border: none; /* Bỏ viền nút */
+            outline: none; /* Bỏ viền khi nhấn vào nút */
+            background-color: #d1a5f0; /* Màu nền của nút */
+            color: white; /* Màu chữ của nút */
+            cursor: pointer; /* Thay đổi con trỏ chuột khi di chuyển vào nút */
+            padding: 15px; /* Khoảng cách bên trong của nút */
+            border-radius: 10px; /* Bo tròn góc của nút */
+            font-size: 18px; /* Kích thước chữ của nút */
+        }
+        #myBtn:hover {
+            background-color: #555; /* Màu nền của nút khi di chuột vào */
+        }
+
+        @media (max-width: 600px) {
+            .text-overlay {
+                font-size: 18px; /* Giảm kích thước font chữ trên màn hình nhỏ */
+                padding: 8px 16px; /* Giảm khoảng cách padding trên màn hình nhỏ */
+            }
+
+            #myBtn {
+                font-size: 16px; /* Giảm kích thước font chữ của nút trên màn hình nhỏ */
+                padding: 10px; /* Giảm khoảng cách padding của nút trên màn hình nhỏ */
+            }
+        }
+    </style>
+</head>
+<script>
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
+    }
+
+    // Cuộn lên đầu trang khi nút được nhấn
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+<body>
+    <img src="are you ready.png" alt="SĂN SÀNG CHƯA BE YÊU">
+    <div class="text-overlay">CLICK HERE</div>
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+</body>
+</html>
